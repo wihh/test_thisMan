@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.mapper.CommuntiyMapper">
+    <insert id="save" parameterType="com.edu.pojo.Community">
+        insert into tb_community(name,existing,completed) value (#{name},#{existing},#{completed})
+    </insert>
+
+
+    <delete id="deleteById" parameterType="int">
+        delete from tb_community where id=#{id}
+    </delete>
+
+
+    <select id="list" resultType="com.edu.pojo.Community">
+        select * from tb_community
+        <where>
+            <if test="null != name and name!=''">
+                and name like '%${name}%'
+            </if>
+        </where>
+
+    </select>
+    <select id="countList" resultType="java.lang.Integer" parameterType="com.edu.pojo.Community">
+        select count(*) from tb_community
+    </select>
+</mapper>
