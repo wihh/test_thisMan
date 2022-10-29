@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Controller
 public class ComController {
-
+    //根据名字注入
     @Resource
     private CommuntiyService communtiyService;
 
